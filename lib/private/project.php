@@ -15,7 +15,7 @@ class Project {
 
 	public function __construct() {
 
-		$header = new \Wuchshuellenrechner\ProjectHeader;
+		$header = new \Wuchshuellenrechner\ProjectHeader("Test1", "Test2", "Test3", "Test4");
 
 	}
 
