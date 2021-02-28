@@ -14,6 +14,10 @@ class Wuchshuellenrechner {
 
 	public static function init() {
 
+		// https://www.php.net/manual/de/function.session-start.php
+		//session_start();
+
+
 		// instantiate the loader and register
 		self::$loader = new \Wuchshuellenrechner\Psr4Autoloader;
 		self::$loader->register();

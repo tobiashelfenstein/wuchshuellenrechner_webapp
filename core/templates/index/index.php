@@ -25,3 +25,5 @@
 	<span class="input-group-text">Waldort</span>
 	<input type="text" class="form-control" placeholder="" aria-label="location" value="<?php echo $header->location; ?>">
 </div>
+
+<?php var_dump($_SESSION); ?>

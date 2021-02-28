@@ -2,7 +2,7 @@
 
 namespace Wuchshuellenrechner\Controller;
 
-use Wuchshuellenrechner\Library\ModelProject;
+use Wuchshuellenrechner\Library\Project;
 
 
 class IndexController implements IController {
@@ -24,5 +24,7 @@ class IndexController implements IController {
 
 	public function indexAction() {
 		$this->view->setVars(['header' => $this->model->getHeader()]);
+
+		$this->model->save();
 	}
 }

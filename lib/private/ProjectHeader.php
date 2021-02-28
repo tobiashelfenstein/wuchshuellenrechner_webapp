@@ -2,10 +2,10 @@
 
 namespace Wuchshuellenrechner\Library;
 
-use Wuchshuellenrechner\Library\ModelBase;
+use Wuchshuellenrechner\Library\SessionArea;
 
 
-class ProjectHeader extends ModelBase {
+class ProjectHeader extends SessionArea {
 
 	// initializes operation specific values as strings
 	public $operation = '';

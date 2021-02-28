@@ -2,18 +2,18 @@
 
 namespace Wuchshuellenrechner\Library;
 
-use Wuchshuellenrechner\Library\ModelBase;
+use Wuchshuellenrechner\Library\SessionArea;
 use Wuchshuellenrechner\Library\ProjectHeader;
 
 
-class Project extends ModelBase {
+class Project extends SessionArea {
 
 	// species registry
-	private $species = null;
-	private $variants = 0;
+	protected $species = null;
+	protected $variants = 0;
 
 	// project header
-	private $header = null;
+	protected $header = null;
 
 
 	public function __construct() {
@@ -24,8 +24,7 @@ class Project extends ModelBase {
 
 
 	public function getSource() {
-
-		// define model
+		// define area
 		return 'Project';
 	}
 
