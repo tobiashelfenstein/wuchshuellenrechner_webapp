@@ -14,16 +14,33 @@ class Wuchshuellenrechner {
 
 	public static function init() {
 
-		// instantiate the loader
+		// instantiate the loader and register
 		self::$loader = new \Wuchshuellenrechner\Psr4Autoloader;
-
-		// register the autoloader
 		self::$loader->register();
+		self::$loader->addNamespace('Wuchshuellenrechner\\Library', 'lib/private');
+		self::$loader->addNamespace('Wuchshuellenrechner\\Library', 'lib/public');
+		self::$loader->addNamespace('Wuchshuellenrechner\\Controller', 'controller');
 
-		// register the base directories for the namespace prefix
-		self::$loader->addNamespace('Wuchshuellenrechner', 'lib/private');
+		self::$project = new \Wuchshuellenrechner\Library\Project();
 
-		self::$project = new \Wuchshuellenrechner\Project();
+		// hier muss noch eine bessere Lösung her
+		$url = (isset($_GET['_url']) ? $_GET['_url'] : '');
+		$urlParts = explode('/', $url);
+
+		$controllerName = (isset($urlParts[0]) && $urlParts[0] ? $urlParts[0] : 'index');
+		$controllerClassName = '\\Wuchshuellenrechner\\Controller\\' . ucfirst($controllerName) . 'Controller';
+
+		$actionName = (isset($urlParts[1]) && $urlParts[1] ? $urlParts[1] : 'index');
+		$actionMethodName = ucfirst($actionName) . 'Action';
+
+		$view = new \Wuchshuellenrechner\Library\View('core', $controllerName, $actionName);
+
+		$controller = new $controllerClassName();
+		$controller->setModel(self::$project);
+		$controller->setView($view);
+
+		$controller->$actionMethodName();
+		$view->renderTemplate();
 
 	}
 

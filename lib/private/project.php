@@ -1,10 +1,12 @@
 <?php
 
-namespace Wuchshuellenrechner;
+namespace Wuchshuellenrechner\Library;
 
-use Wuchshuellenrechner\ProjectHeader;
+use Wuchshuellenrechner\Library\ModelBase;
+use Wuchshuellenrechner\Library\ProjectHeader;
 
-class Project {
+
+class Project extends ModelBase {
 
 	// species registry
 	private $species = null;
@@ -13,10 +15,23 @@ class Project {
 	// project header
 	private $header = null;
 
+
 	public function __construct() {
 
-		$header = new \Wuchshuellenrechner\ProjectHeader("Test1", "Test2", "Test3", "Test4");
+		$this->header = new \Wuchshuellenrechner\Library\ProjectHeader("Test1", "Test2", "Test3", "Test4");
 
+	}
+
+
+	public function getSource() {
+
+		// define model
+		return 'Project';
+	}
+
+
+	public function getHeader() {
+		return $this->header;
 	}
 
 }

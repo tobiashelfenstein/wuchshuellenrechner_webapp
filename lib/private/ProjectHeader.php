@@ -1,24 +1,24 @@
 <?php
 
-namespace Wuchshuellenrechner;
+namespace Wuchshuellenrechner\Library;
 
-class ProjectHeader {
+use Wuchshuellenrechner\Library\ModelBase;
+
+
+class ProjectHeader extends ModelBase {
 
 	// initializes operation specific values as strings
-	private $operation = "";
-	private $district = "";
-	private $manager = "";
-	private $location = "";
+	public $operation = '';
+	public $district = '';
+	public $manager = '';
+	public $location = '';
 
 	// initializes project specific sales tax as boolean
-	private $tax = true;
+	public $tax = true;
 
 	// initializes project specific planting specific values as integers
-	private $length = 0;
-	private $count = 0;
-
-	// initializes chart specific values as integers
-	// TODO private $view = null;
+	public $length = 0;
+	public $count = 0;
 
 
 	public function __construct($operation, $district, $manager, $location, $tax=true, $length=400, $count=900) {
@@ -33,6 +33,12 @@ class ProjectHeader {
 
 		$this->length = $length;
 		$this->count = $count;
+	}
 
+
+	public function getSource() {
+
+		// define model
+		return 'ProjectHeader';
 	}
 }
