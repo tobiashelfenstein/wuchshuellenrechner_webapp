@@ -55,25 +55,6 @@ class Session {
 	}
 
 
-	private function count() {
-
-		return count($_SESSION);
-	}
-
-
-	public function id($key) {
-
-		// sollte eigentlich an einer anderen Stelle programmiert werden
-		// gehört hier nicht her
-
-		if (isset($_SESSION[$key]['id'])) {
-			return $_SESSION[$key]['id'];
-		}
-
-		return $this->count() - 1;
-	}
-
-
 	public function __isset($key) {
 
 		return isset($_SESSION[$key]);

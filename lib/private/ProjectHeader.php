@@ -21,10 +21,10 @@ class ProjectHeader extends SessionArea {
 	public $count = 0;
 
 
-	public function __construct($operation, $district, $manager, $location, $tax=true, $length=400, $count=900) {
+	public function __construct() {
 
 		// initialize private variables
-		$this->operation = $operation;
+		/*$this->operation = $operation;
 		$this->district = $district;
 		$this->manager = $manager;
 		$this->location = $location;
@@ -32,7 +32,8 @@ class ProjectHeader extends SessionArea {
 		$this->tax = $tax;
 
 		$this->length = $length;
-		$this->count = $count;
+		$this->count = $count;*/
+
 	}
 
 

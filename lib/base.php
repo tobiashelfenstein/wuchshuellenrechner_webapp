@@ -25,10 +25,8 @@ class Wuchshuellenrechner {
 		self::$loader->addNamespace('Wuchshuellenrechner\\Library', 'lib/public');
 		self::$loader->addNamespace('Wuchshuellenrechner\\Controller', 'controller');
 
-		self::$project = new \Wuchshuellenrechner\Library\Project();
-
 		// hier muss noch eine bessere Lösung her
-		$url = (isset($_GET['_url']) ? $_GET['_url'] : '');
+		$url = (isset($_GET['page']) ? $_GET['page'] : '');
 		$urlParts = explode('/', $url);
 
 		$controllerName = (isset($urlParts[0]) && $urlParts[0] ? $urlParts[0] : 'index');
@@ -40,7 +38,7 @@ class Wuchshuellenrechner {
 		$view = new \Wuchshuellenrechner\Library\View('core', $controllerName, $actionName);
 
 		$controller = new $controllerClassName();
-		$controller->setModel(self::$project);
+		$controller->setModel();
 		$controller->setView($view);
 
 		$controller->$actionMethodName();

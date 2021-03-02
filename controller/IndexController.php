@@ -2,29 +2,25 @@
 
 namespace Wuchshuellenrechner\Controller;
 
-use Wuchshuellenrechner\Library\Project;
-
 
 class IndexController implements IController {
 
 	protected $model;
 	protected $view;
 
-	public function setView(\Wuchshuellenrechner\Library\View $v)
+	public function setView($v)
 	{
 		$this->view = $v;
 	}
 
 
-	public function setModel(\Wuchshuellenrechner\Library\Project $p)
+	public function setModel()
 	{
-		$this->model = $p;
+		// no model
 	}
 
 
 	public function indexAction() {
-		$this->view->setVars(['header' => $this->model->getHeader()]);
-
-		$this->model->save();
+		// no action
 	}
 }

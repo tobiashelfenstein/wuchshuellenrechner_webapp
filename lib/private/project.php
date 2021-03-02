@@ -18,7 +18,7 @@ class Project extends SessionArea {
 
 	public function __construct() {
 
-		$this->header = new \Wuchshuellenrechner\Library\ProjectHeader("Test1", "Test2", "Test3", "Test4");
+		$this->header = \Wuchshuellenrechner\Library\ProjectHeader::read();
 
 	}
 

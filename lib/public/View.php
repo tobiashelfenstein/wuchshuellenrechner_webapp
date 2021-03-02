@@ -7,6 +7,8 @@ class View {
 	// view specific values
 	protected $path, $controller, $action;
 
+	protected $vars = []; // TODO
+
 	public function __construct($path, $controllerName, $actionName) {
 
 		// initialize protected variables

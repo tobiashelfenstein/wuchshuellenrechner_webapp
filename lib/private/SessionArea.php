@@ -6,9 +6,12 @@ use Wuchshuellenrechner\Library\Session;
 
 abstract class SessionArea {
 
+	const PHP_CLASS_SOURCE = "php_class_object";
+
+
 	private static $storage;
 
-	protected $id;
+	protected $source;
 
 	public function getStorage() {
 		// anstelle von getStorage wäre natürlich der direkte Zugriff auf $_SESSION möglich
@@ -26,66 +29,57 @@ abstract class SessionArea {
 
 		$model = new static();
 		$area = $model->getSource();
-
 		$storage = $model->getStorage();
 
-		$fields = [];
 		if (isset($storage->$area)) {
-			$fields = $storage->$area;
+			foreach (array_keys(get_object_vars($model)) as $key) {
+				$model->$key = $model->nullValue($storage->$area[$key]);
+			}
 		}
 
-		$this->setFields($fields);
+		return $model;
 	}
 
 
 	public function save() {
 
 		$area = $this->getSource();
-
 		$storage = $this->getStorage();
-		if (!isset($storage->$area)) {
-			$storage->$area = [];
-		}
-		$this->id = $storage->id($area);
+		$this->source = self::PHP_CLASS_SOURCE;
 
 		// always update values
-		$fields = $this->getFields();
-		//$fields = get_class_vars($this);
 		$tmpArea = [];
-		foreach ($fields as $key => $value) {
+		foreach (get_object_vars($this) as $key => $value) {
 			if ($value instanceof SessionArea) {
 				$value = $value->save();
 			}
-			$tmpArea[$key] = $value;
+			$tmpArea[$key] = $this->emptyString($value);
 		}
 		$storage->$area = $tmpArea;
 
-		return $this->id;
+		return $this->source;
 	}
 
 
-	private function getFields() {
+	private function emptyString($v) {
 
-		$fields = [];
-		foreach ($this as $name => $value) {
-			if ($value === null) {
-				$fields[$name] = '';
-			}
-			else {
-				$fields[$name] = $value;
-			}
+		if ($v === null) {
+			$v = '';
 		}
 
-		return $fields;
+		return $v;
 	}
 
 
-	private function setFields($fields) {
+	private function nullValue($v) {
 
-		foreach ($fields as $name => $value) {
-			$this->name = $value;
+		if ($v === '') {
+			$v = null;
 		}
+
+		return $v;
 	}
+
 
 	abstract public function getSource();
 }
