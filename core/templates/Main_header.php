@@ -7,7 +7,7 @@
 		<title>Wuchshüllenrechner</title>
 
 		<!-- Bootstrap core CSS -->
-		<link href="/wuchshuellenrechner/core/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/core/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 
 	<body>

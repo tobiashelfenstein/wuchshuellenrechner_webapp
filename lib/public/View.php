@@ -24,7 +24,7 @@ class View {
 
 		$tmplFile = $this->path . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $this->controller . DIRECTORY_SEPARATOR . $this->action . '.php';
 
-		// spare the view the bloat of using "$this->vars[]" for every variable
+		// TODO spare the view the bloat of using "$this->vars[]" for every variable
 		foreach ($this->vars as $k => $v) {
 			$$k = $v;
 		}

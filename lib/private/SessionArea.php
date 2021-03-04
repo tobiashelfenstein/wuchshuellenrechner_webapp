@@ -33,7 +33,10 @@ abstract class SessionArea {
 
 		if (isset($storage->$area)) {
 			foreach (array_keys(get_object_vars($model)) as $key) {
-				$model->$key = $model->nullValue($storage->$area[$key]);
+				// don't override instanced objects
+				if ($storage->$area[$key] !== self::PHP_CLASS_SOURCE) {
+					$model->$key = $model->nullValue($storage->$area[$key]);
+				}
 			}
 		}
 

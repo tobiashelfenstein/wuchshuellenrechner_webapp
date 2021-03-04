@@ -27,4 +27,11 @@ class PlantsController implements IController {
 
 		$this->model->save();
 	}
+
+
+	public function wizardAction() {
+		$this->view->setVars(['header' => $this->model->getHeader()], ['model' => $this->model]);
+
+		$this->model->save();
+	}
 }

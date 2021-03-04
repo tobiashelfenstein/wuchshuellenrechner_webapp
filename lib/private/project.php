@@ -33,4 +33,14 @@ class Project extends SessionArea {
 		return $this->header;
 	}
 
+
+	public function setHeaderAttr($key, $value) {
+
+		$this->header->$key = $value;
+	}
+
+
+	public function getHeaderAttr($key) {
+	}
+
 }

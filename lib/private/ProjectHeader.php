@@ -16,10 +16,6 @@ class ProjectHeader extends SessionArea {
 	// initializes project specific sales tax as boolean
 	public $tax = true;
 
-	// initializes project specific planting specific values as integers
-	public $length = 0;
-	public $count = 0;
-
 
 	public function __construct() {
 

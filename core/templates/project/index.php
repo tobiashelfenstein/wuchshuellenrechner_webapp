@@ -29,7 +29,7 @@
 
 <p>
 	<!-- FORMULAR -->
-	<a class="btn btn-primary" href="/wuchshuellenrechner/plants/" role="button">Pflanzen hinterlegen</a>
+	<a class="btn btn-primary" href="/plants/" role="button">Pflanzen hinterlegen</a>
 </p>
 
 </main>
