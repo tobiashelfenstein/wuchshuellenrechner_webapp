@@ -29,7 +29,7 @@ class ProjectController implements IController {
 
 		// save, when use submitted form
 		if (isset($_POST['submit'])) {
-			foreach ($this->model->getHeader() as $key => $value) {
+			foreach (array_keys(get_object_vars($this->model->getHeader())) as $key) {
 				if (isset($_POST[$key])) {
 					$this->model->setHeaderAttr($key, $_POST[$key]);
 				}

@@ -7,6 +7,7 @@ use Wuchshuellenrechner\Library\Session;
 abstract class SessionArea {
 
 	const PHP_CLASS_SOURCE = "php_class_object";
+	const PHP_ARRAY_SOURCE = "php_array_object";
 
 
 	private static $storage;
@@ -25,16 +26,20 @@ abstract class SessionArea {
 	}
 
 
-	public static function read() {
+	public static function read($area = '') {
 
 		$model = new static();
-		$area = $model->getSource();
 		$storage = $model->getStorage();
+
+		// use parameter, else get area from class
+		if (empty($area)) {
+			$area = $model->getSource();
+		}
 
 		if (isset($storage->$area)) {
 			foreach (array_keys(get_object_vars($model)) as $key) {
 				// don't override instanced objects
-				if ($storage->$area[$key] !== self::PHP_CLASS_SOURCE) {
+				if (!in_array($storage->$area[$key], $model->sourceStrings())) {
 					$model->$key = $model->nullValue($storage->$area[$key]);
 				}
 			}
@@ -44,10 +49,38 @@ abstract class SessionArea {
 	}
 
 
+	public static function readAll($pattern) {
+
+		//TODO
+		// temporary model to open connection to storage
+		//$model = new self();
+		$model = new static();
+		$storage = $model->getStorage();
+
+		$container = [];
+		$pattern = '/^' . $pattern . '\d+$/';	// e.g. plant1 or plant100 but not plants
+		foreach ($storage as $area => $value) {
+			if (preg_match($pattern, $area)) {
+				// new instance from class
+				$current = new static();
+				foreach (array_keys(get_object_vars($current)) as $key) {
+					$current->$key = $current->nullValue($storage->$area[$key]);
+				}
+
+				// add new instance to array
+				$container[] = $current;
+			}
+		}
+
+		return $container;
+	}
+
+
 	public function save() {
 
-		$area = $this->getSource();
 		$storage = $this->getStorage();
+
+		$area = $this->getSource();
 		$this->source = self::PHP_CLASS_SOURCE;
 
 		// always update values
@@ -55,6 +88,12 @@ abstract class SessionArea {
 		foreach (get_object_vars($this) as $key => $value) {
 			if ($value instanceof SessionArea) {
 				$value = $value->save();
+			}
+			elseif (is_array($value)) {
+				for ($i=0; $i < count($value); $i++) {
+					$value[$i]->save();
+				}
+				$value = self::PHP_ARRAY_SOURCE;
 			}
 			$tmpArea[$key] = $this->emptyString($value);
 		}
@@ -81,6 +120,15 @@ abstract class SessionArea {
 		}
 
 		return $v;
+	}
+
+
+	private function sourceStrings() {
+
+		return array(
+			self::PHP_CLASS_SOURCE,
+			self::PHP_ARRAY_SOURCE,
+		);
 	}
 
 
