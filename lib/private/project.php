@@ -2,8 +2,8 @@
 
 namespace Wuchshuellenrechner\Library;
 
-use Wuchshuellenrechner\Library\SessionArea;
-use Wuchshuellenrechner\Library\ProjectHeader;
+use wuchshuellenrechner\library\SessionArea;
+use wuchshuellenrechner\library\ProjectHeader;
 
 
 class Project extends SessionArea {
@@ -18,7 +18,7 @@ class Project extends SessionArea {
 
 	public function __construct() {
 
-		$this->header = \Wuchshuellenrechner\Library\ProjectHeader::read();
+		$this->header = \wuchshuellenrechner\library\ProjectHeader::read();
 
 	}
 

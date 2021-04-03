@@ -1,8 +1,8 @@
 <?php
 
-namespace Wuchshuellenrechner\Library;
+namespace wuchshuellenrechner\library;
 
-use Wuchshuellenrechner\Library\SessionArea;
+use wuchshuellenrechner\library\SessionArea;
 
 
 class ProjectHeader extends SessionArea {

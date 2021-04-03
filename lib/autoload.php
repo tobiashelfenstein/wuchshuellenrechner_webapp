@@ -1,6 +1,6 @@
 <?php
 
-namespace Wuchshuellenrechner;
+namespace wuchshuellenrechner;
 
 // https://poe-php.de/tutorial/php-automatisches-laden-klassen-autoloading
 // https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md

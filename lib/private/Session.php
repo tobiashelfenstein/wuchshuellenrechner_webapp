@@ -2,7 +2,7 @@
 
 // from https://www.php.net/manual/de/function.session-start.php
 
-namespace Wuchshuellenrechner\Library;
+namespace wuchshuellenrechner\library;
 
 class Session {
 

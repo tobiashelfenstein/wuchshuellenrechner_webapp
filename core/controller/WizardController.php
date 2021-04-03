@@ -2,10 +2,10 @@
 
 namespace Wuchshuellenrechner\Controller;
 
-use Wuchshuellenrechner\Library\Project;
+use Wuchshuellenrechner\Library\Wizard;
 
 
-class ProjectController implements IController {
+class WizardController implements IController {
 
 	protected $model;
 	protected $view;
@@ -23,7 +23,7 @@ class ProjectController implements IController {
 	public function indexAction() {
 	}
 
-	public function wizardAction() {
+	public function projectAction() {
 		// fill all fields with values
 		$this->view->setVars(['header' => $this->model->getHeader()], ['model' => $this->model]);
 

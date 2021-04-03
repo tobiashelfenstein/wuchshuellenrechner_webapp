@@ -19,14 +19,15 @@ class Wuchshuellenrechner {
 
 
 		// instantiate the loader and register
-		self::$loader = new \Wuchshuellenrechner\Psr4Autoloader;
+		self::$loader = new \wuchshuellenrechner\Psr4Autoloader;
 		self::$loader->register();
-		self::$loader->addNamespace('Wuchshuellenrechner\\Library', 'lib/private');
-		self::$loader->addNamespace('Wuchshuellenrechner\\Library', 'lib/public');
-		self::$loader->addNamespace('Wuchshuellenrechner\\Controller', 'controller');
+		self::$loader->addNamespace('wuchshuellenrechner\\library', 'lib/private');
+		self::$loader->addNamespace('wuchshuellenrechner\\library', 'lib/public');
+		self::$loader->addNamespace('wuchshuellenrechner\\controller', 'core/controller');
+		self::$loader->addNamespace('wuchshuellenrechner\\apps', 'apps');
 
 		// hier muss noch eine bessere Lösung her
-		$url = (isset($_GET['page']) ? $_GET['page'] : '');
+		/*$url = (isset($_GET['page']) ? $_GET['page'] : '');
 		$urlParts = explode('/', $url);
 
 		$controllerName = (isset($urlParts[0]) && $urlParts[0] ? $urlParts[0] : 'index');
@@ -42,7 +43,12 @@ class Wuchshuellenrechner {
 		$controller->setView($view);
 
 		$controller->$actionMethodName();
-		$view->renderTemplate();
+		$view->renderTemplate();*/
+
+
+		$app = new \wuchshuellenrechner\library\application();
+		$app->setDefaultApplication('start');
+		$app->start();
 
 	}
 

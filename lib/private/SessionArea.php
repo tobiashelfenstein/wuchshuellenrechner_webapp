@@ -1,8 +1,8 @@
 <?php
 
-namespace Wuchshuellenrechner\Library;
+namespace wuchshuellenrechner\library;
 
-use Wuchshuellenrechner\Library\Session;
+use wuchshuellenrechner\library\Session;
 
 abstract class SessionArea {
 
