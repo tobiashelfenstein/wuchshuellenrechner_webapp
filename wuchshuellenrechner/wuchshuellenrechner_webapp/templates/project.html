@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Neues Projekt</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.operation.label }}<br>
+            {{ form.operation(size=32) }}
+        </p>
+        <p>
+            {{ form.district.label }}<br>
+            {{ form.district(size=32) }}
+        </p>
+        <p>
+            {{ form.manager.label }}<br>
+            {{ form.manager(size=32) }}
+        </p>
+        <p>
+            {{ form.location.label }}<br>
+            {{ form.location(size=32) }}
+        </p>
+        <p>
+            {{ form.tax.label }}<br>
+            {{ form.tax() }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
