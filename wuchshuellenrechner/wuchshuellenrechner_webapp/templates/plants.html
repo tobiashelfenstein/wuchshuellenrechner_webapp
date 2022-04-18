@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Pflanzen</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <h2>Kosten für die Pflanzen</h2>
+        <p>
+            {{ form.species() }}
+            {{ form.cost(size=32) }}
+            <a href="javascript:void(0);" id="add-species" title="Baumart hinzufügen"><img src="{{ url_for('static', filename='images/list-add.png') }}" /></a>
+        </p>
+
+        <br>
+
+        <!-- <button id="add-species" type="button">Baumart hinzufügen</button> -->
+
+        <h2>Allgemeine Kosten</h2>
+        <p>
+            {{ form.preparation.label }}<br>
+            {{ form.preparation(size=32) }}
+        </p>
+        <p>
+            {{ form.planting.label }}<br>
+            {{ form.planting(size=32) }}
+        </p>
+        <p>
+            {{ form.tending.label }}<br>
+            {{ form.tending() }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    <script type="text/javascript">
+        window.onload = function() {
+            var max_fields = 10;
+
+            let addSpeciesLink = document.getElementById('add-species');
+
+            addSpeciesLink.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                let allSpeciesWrapper = document.getElementById('species');
+                let allCostWrapper = document.getElementById('cost');
+
+                let allSpeciesFields = allSpeciesWrapper.getElementsByTagName('select');
+                let allCostFields = allCostWrapper.getElementsByTagName('input');
+
+
+                if (allSpeciesFields.length >= max_fields || allCostFields.length >= max_fields) {
+                    alert('Nicht mehr als 10 Felder möglich!');
+                    return;
+                }
+
+                let speciesFieldIds = [];
+                for (let i = 0; i < allSpeciesFields.length; i++) {
+                    speciesFieldIds.push(parseInt(allSpeciesFields[i].name.split('-')[1]));
+                }
+
+                let costFieldIds= [];
+                for (let i = 0; i < allCostFields.length; i++) {
+                    costFieldIds.push(parseInt(allCostFields[i].name.split('-')[1]));
+                }
+
+                let newSpeciesFieldId = `species-${Math.max(...speciesFieldIds) + 1}`;
+                let newCostFieldId = `cost-${Math.max(...costFieldIds) + 1}`;
+                //let newSpeciesFieldName = `species-${newSpeciesFieldId}`;
+
+                let speciesTemplate = document.getElementById('species-0');
+                let costTemplate = document.getElementById('cost-0');
+
+
+                let newSpeciesField = speciesTemplate.cloneNode(true).outerHTML;
+                newSpeciesField = newSpeciesField.replace(/species-0/g, newSpeciesFieldId);
+
+                let newCostField = costTemplate.cloneNode(true).outerHTML;
+                newCostField = newCostField.replace(/cost-0/g, newCostFieldId);
+
+                allSpeciesWrapper.insertAdjacentHTML('beforeend', `<li><label for="${newSpeciesFieldId}">Baumart</label> ${newSpeciesField}</li>`);
+                allCostWrapper.insertAdjacentHTML('beforeend', `<li><label for="${newCostFieldId}">Stückkosten</label> ${newCostField}</li>`);
+            });
+        }
+
+    </script>
+{% endblock %}

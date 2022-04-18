@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Wuchshülle</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.model.label }}
+            {{ form.model() }}
+        </p>
+        <p>
+            {{ form.cost.label }}<br>
+            {{ form.cost(size=32) }}
+        </p>
+        <p>
+            {{ form.accessories.label }}<br>
+            {{ form.accessories(size=32) }}
+        </p>
+        <p>
+            {{ form.installation.label }}<br>
+            {{ form.installation() }}
+        </p>
+        <p>
+            {{ form.maintenance.label }}<br>
+            {{ form.maintenance() }}
+        </p>
+        <p>
+            {{ form.removal.label }}<br>
+            {{ form.removal() }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

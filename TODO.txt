@@ -1,0 +1,9 @@
+flask-wtf
+python-dotenv
+
+https://www.youtube.com/watch?v=Lzj13QhRhzQ
+https://tutorial101.blogspot.com/2020/11/python-flask-add-remove-input-fields.html
+https://mattstauffer.com/blog/a-little-trick-for-grouping-fields-in-an-html-form/
+
+https://sagarkaurav.hashnode.dev/flask-wtf-forms-dynamic-fields-using-javascript
+https://github.com/sagarkaurav/hashnode-blog-flask-wtf-forms-ddynamic-fields-using-javascript/blob/main/templates/index.html
