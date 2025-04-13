@@ -1,1 +1,88 @@
-<p>simple works!</p>
+<article>
+    <section>
+        <form>
+            <fieldset>
+                <h2>Einzelschutz</h2>
+                <label for="shelterType">Wuchshüllentyp</label>
+                <select id="shelterType" name="shelterType">
+                    <option value="mk">MK-Hülle</option>
+                </select>
+
+                <label for="costs">Stückkosten Wuchshülle [EUR/Stück]</label>
+                <input id="costs" type="number" step=".01" />
+
+                <label for="zubehör">Stückkosten Zubehör [EUR/Stück]</label>
+                <input id="zubehör" type="number" step=".01" />
+
+                <label for="transport1">Transport [Stunde(n)]</label>
+                <input id="transport1" type="number" step=".1" />
+
+                <label for="speed">Aufbauleistung [Stück/Stunde]</label>
+                <input id="speed" type="number" step="1" />
+
+                <label for="kontrolle1">Unterhaltung und Kontrolle [EUR/Jahr]</label>
+                <input id="kontrolle1" type="number" step=".01" />
+
+                <label for="abbau1">Abbaukosten [EUR]</label>
+                <input id="abbau1" type="number" step=".01" />
+
+                <label for="entsorgung1">Entsorgungskosten [EUR]</label>
+                <input id="entsorgung1" type="number" step=".01" />
+
+
+            </fieldset>
+            <fieldset>
+                <h2>Zaun</h2>
+                <label for="fenceType">Zauntyp</label>
+                <select id="fenceType" name="fenceType">
+                    <option value="horde">Hordengatter</option>
+                </select>
+
+                <label for="rolle">Element- oder Rollenkosten [EUR/Stück]</label>
+                <input id="rolle" type="number" step=".01" />
+
+                <label for="rollenlänge">Element- oder Rollenlänge [lfm/Stück]</label>
+                <input id="rollenlänge" type="number" step="1" />
+
+                <label for="pfosten">Pfosten- oder Strebenkosten [EUR/Stück]</label>
+                <input id="pofsten" type="number" step=".01" />
+
+                <label for="pfostenabstand">Pfosten- oder Strebenabstand [lfm]</label>
+                <input id="pfostenabstand" type="number" step="1" />
+
+                <label for="zubehör2">Zubehörkosten [EUR]</label>
+                <input id="zuebhör2" type="number" step=".01" />
+
+                <label for="transport2">Transport [Stunde(n)]</label>
+                <input id="transport2" type="number" step=".1" />
+
+                <label for="speed">Aufbauleistung [lfm/Stunde]</label>
+                <input id="speed" type="number" step="1" />
+
+                <label for="kontrolle2">Unterhaltung und Kontrolle [EUR/Jahr]</label>
+                <input id="kontrolle2" type="number" step=".01" />
+
+                <label for="abbau2">Abbaukosten [EUR]</label>
+                <input id="abbau2" type="number" step=".01" />
+
+                <label for="entsorgung2">Entsorgungskosten [EUR]</label>
+                <input id="entsorgung2" type="number" step=".01" />
+
+            </fieldset>
+            <fieldset>
+                <h2>Allgemeine Abfragen</h2>
+                <label for="anzahl">Anzahl Pflanzen [Stück]</label>
+                <input id="anzahl" type="number" step="1" />
+
+                <label for="zaunlänge">Zaunlänge [lfm]</label>
+                <input id="zaunlänge" type="number" step=".01" />
+
+                <label for="hour">Stundenlohn [EUR/Stunde]</label>
+                <input id="hour" type="number" step=".01" />
+
+                <button type="submit">Kalkulieren</button>
+
+            </fieldset>
+        </form>
+    </section>
+</article>
